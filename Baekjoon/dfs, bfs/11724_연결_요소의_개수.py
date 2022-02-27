@@ -13,7 +13,7 @@ def dfs(i):
             dfs(j)
 
 for _ in range(m):
-    x, y = map(int, input().split())
+    x, y = map(int, sys.stdin.readline().split())
     matrix[x][y] = 1
     matrix[y][x] = 1
 
