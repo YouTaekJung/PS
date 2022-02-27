@@ -1,12 +1,15 @@
 n, m = map(int, input().split())
-li = []
+dic1 = {}
+dic2 = {}
 
-for _ in range(n):
-    li.append(input())
+for i in range(n):
+    cur = input()
+    dic1[str(i + 1)] = cur
+    dic2[cur] = i + 1
 
 for _ in range(m):
     cur = input()
     if cur.isdigit():
-        print(li[int(cur) - 1])
+        print(dic1[cur])
     else:
-        print(li.index(cur) + 1)
+        print(dic2[cur])
