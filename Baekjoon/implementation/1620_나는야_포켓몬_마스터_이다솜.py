@@ -1,14 +1,17 @@
-n, m = map(int, input().split())
+import sys
+
+n, m = map(int, sys.stdin.readline().split())
 dic1 = {}
 dic2 = {}
 
 for i in range(n):
-    cur = input()
+    cur = sys.stdin.readline().split()[0]
     dic1[str(i + 1)] = cur
     dic2[cur] = i + 1
 
 for _ in range(m):
-    cur = input()
+    cur = sys.stdin.readline().split()[0]
+
     if cur.isdigit():
         print(dic1[cur])
     else:
