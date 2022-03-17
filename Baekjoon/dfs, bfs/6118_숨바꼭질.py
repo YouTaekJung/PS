@@ -1,48 +1,25 @@
-flag = False
-res = []
+from collections import deque
 
+n, m = map(int, input().split())
+graph = [[] for _ in range(n + 1)]
+check = [0] * (n + 1)
 
-def solution(tickets):
-    d = {}
-    for t in tickets:
-        s, e = t
-        if s in d:
-            d[s].append(e)
-        else:
-            d[s] = [e]
-    for s in d:
-        d[s] = sorted(d[s])
+for _ in range(m):
+    x, y = map(int, input().split())
+    graph[x].append(y)
+    graph[y].append(x)
 
-    print(d)
-    def dfs(start, cur, check):
-        global flag, res
-        if flag:
-            return
-        if len(cur) == len(tickets) + 1:
-            flag = True
-            res.append(cur)
-            return res
-        else:
-            res.append(cur)
+def bfs(node):
+    q = deque()
+    q.append(node)
+    check[node] = 1
+    while q:
+        node = q.popleft()
+        for g in graph[node]:
+            if check[g] == 0:
+                check[g] = check[node] + 1
+                q.append(g)
 
-            if start in d:
-                for end in d[start]:
-                    if [start, end] in tickets:
-                        li = [i for i, v in enumerate(tickets) if v == [start, end]]
-                        idx = tickets.index([start, end])
-                        if check[idx] == 1:
-                            for l in li:
-                                if check[l] == 0:
-                                    idx = l
-                                    break
-                        if check[idx] == 0:
-                            temp = check[:]
-                            temp[idx] = 1
-                            dfs(end, cur + [end], temp)
-
-        return
-
-    dfs('ICN', ['ICN'], [0] * len(tickets))
-    return res[-1]
-
-solution([['ICN', 'A'], ['ICN', 'A'], ['A', 'ICN'], ['A' , 'C']])
+bfs(1)
+m = max(check)
+print(check.index(m), m - 1, check.count(m))
