@@ -11,4 +11,7 @@ for i in [0, 5]:
 
 one, two, three = min(li), min(p_two), min(p_three)
 
-print(one * (n - 2) * (5 * n - 6) + 4 * (two * (2 * n - 3) + three))
+if n == 1:
+    print(sum(li) - max(li))
+else:
+    print(one * (n - 2) * (5 * n - 6) + 4 * (two * (2 * n - 3) + three))
