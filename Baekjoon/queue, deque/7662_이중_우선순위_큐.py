@@ -31,4 +31,7 @@ for _ in range(t):
     while max_h and not check[max_h[0][1]]:
         heapq.heappop(max_h)
 
-    print(*[-heapq.heappop(max_h)[0], heapq.heappop(min_h)[0]] if len(min_h) else 'EMPTY')
+    if len(min_h) and len(max_h):
+        print(-heapq.heappop(max_h)[0], heapq.heappop(min_h)[0])
+    else:
+        print('EMPTY')
