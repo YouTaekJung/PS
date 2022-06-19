@@ -1,5 +1,5 @@
 n = int(input())
-li = list(map(int, input().split()))
+li = sorted(list(map(int, input().split())))
 
 def check():
     s = 0
@@ -7,7 +7,7 @@ def check():
         return -1
     for i, l in enumerate(li[:-1]):
         s += l
-        if s < i * (i - 1) // 2:
+        if s < i * (i + 1) // 2:
             return -1
     return 1
 
