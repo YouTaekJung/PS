@@ -12,19 +12,19 @@ for _ in range(m):
 for k in range(1, n + 1):
     for i in range(1, n + 1):
         for j in range(1, n + 1):
-            if i != j:
+            if i == j:
+                graph[i][j][0] = 0
+            else:
                 if graph[i][j][0] > graph[i][k][0] + graph[k][j][0]:
                     graph[i][j][0] = graph[i][k][0] + graph[k][j][0]
                     graph[i][j][1] = graph[i][k][1] + graph[k][j][1][1:]
-            else:
-                graph[i][j][0] = 0
 
 for g in graph[1:]:
     print(' '.join(list(map(lambda x: str(x[0]), g[1:]))))
 
 for i in range(1, n + 1):
     for j in range(1, n + 1):
-        if graph[i][j][0] == 0:
+        if i == j:
             print(0)
         else:
             print(len(graph[i][j][1]), *graph[i][j][1])
