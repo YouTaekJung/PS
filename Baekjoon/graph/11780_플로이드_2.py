@@ -20,11 +20,11 @@ for k in range(1, n + 1):
                     graph[i][j][1] = graph[i][k][1] + graph[k][j][1][1:]
 
 for g in graph[1:]:
-    print(' '.join(list(map(lambda x: str(x[0]), g[1:]))))
+    print(' '.join(list(map(lambda x: str(x[0]), g[1:]))).replace('1000000000', '0'))
 
 for i in range(1, n + 1):
     for j in range(1, n + 1):
-        if i == j:
+        if i == j or graph[i][j][0] == INF:
             print(0)
         else:
             print(len(graph[i][j][1]), *graph[i][j][1])
