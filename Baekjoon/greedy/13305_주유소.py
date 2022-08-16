@@ -1,10 +1,15 @@
 n = int(input())
-d = list(map(int, input().split()))[::-1]
-p = list(map(int, input().split()))[:-1][::-1]
-res = [0] * (n - 1)
-res[0] = d[0] * p[0]
+city = list(map(int, input().split()))
+cost = list(map(int, input().split()))
 
-for i in range(1, n - 1):
-    res[i] = min(sum(d[:i + 1]) * p[i], res[i - 1] + d[i] * p[i])
+ans, d = 0, 0
+prev = cost.pop(0)
 
-print(res[-1])
+for i in range(n - 1):
+    d += city[i]
+    if prev > cost[i]:
+        ans += prev * d
+        prev = cost[i]
+        d = 0
+
+print(ans + prev * d)
