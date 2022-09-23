@@ -1,0 +1,1 @@
+print('SK' if [1, 0, 1, 1, 1, 1, 0][(int(input()) - 1) % 7] else 'CY')
