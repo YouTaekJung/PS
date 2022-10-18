@@ -14,11 +14,11 @@ def sum_board(board):
 def acc(mat, x1, y1, x2, y2):
     return mat[x2][y2] - mat[x1][y2] - mat[x2][y1] + mat[x1][y1]
 
-mat, ans = sum_board(board), 0
+mat, ans = sum_board(board), -1000000000
 for x1 in range(n):
     for y1 in range(m):
-        for x2 in range(x1, n):
-            for y2 in range(y1, m):
+        for x2 in range(x1 + 1, n):
+            for y2 in range(y1 + 1, m):
                 ans = max(ans, acc(mat, x1, y1, x2, y2))
 
 print(ans)
