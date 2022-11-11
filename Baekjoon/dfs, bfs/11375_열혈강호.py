@@ -12,6 +12,7 @@ def bimatch(num):
     for g in graph[num]:
         if selected[g] == -1 or bimatch(selected[g]):
             selected[g] = num
+            print(selected)
             return True
     return False
 
