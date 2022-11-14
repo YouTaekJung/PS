@@ -12,8 +12,8 @@ def bimatch(num):
     return False
 
 n, m = map(int, input().split())
-graph = [[] for _ in range(n)]
-selected = [-1] * (m + 1)
+graph = [[] for _ in range(n + 1)]
+selected = [-1] * (n + 1)
 
 for _ in range(m):
     x, y = map(int, input().split())
@@ -21,7 +21,7 @@ for _ in range(m):
 
 ans = 0
 for i in range(n):
-    visited = [0] * n
+    visited = [0] * 1000
     if bimatch(i):
         ans += 1
 print(ans)
