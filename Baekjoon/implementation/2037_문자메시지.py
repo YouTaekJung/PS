@@ -16,4 +16,3 @@ for i in range(len(text)):
                 ans += (1 + k) * p
                 prev = j
 print(ans)
-
