@@ -1,7 +1,9 @@
 function solution(str_list) {
-    const idx = str_list.findIndex(item => item === 'l' || item === 'r')
-    
-    if (idx === -1 ) return []
-    else if ( str_list[idx] === 'l' ) return str_list.slice(0, idx)    
-    return str_list.slice(idx + 1)
+    for (let i = 0; i < str_list.length; i++) {
+        if (str_list[i] === 'l')
+            return str_list.slice(0, i)
+        if (str_list[i] === 'r')
+            return str_list.slice(i + 1)
+    }
+    return []
 }
